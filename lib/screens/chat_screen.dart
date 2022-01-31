@@ -35,21 +35,6 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  // void getMessages() async {
-  //   final messages = await _fireStore.collection('messages').get();
-  //   for (var message in messages.docs) {
-  //     print(message.data());
-  //   }
-  // }
-
-  void messagesStream() async {
-    await for (var snapshot in _fireStore.collection('messages').snapshots()) {
-      for (var message in snapshot.docs) {
-        print(message.data());
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,6 +132,7 @@ class MessageStream extends StatelessWidget {
         return Expanded(
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            reverse: true,
             children: messageBubbles,
           ),
         );
