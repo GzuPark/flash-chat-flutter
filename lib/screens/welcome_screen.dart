@@ -18,19 +18,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
+
     controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
       upperBound: 1.0,
     );
 
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white).animate(controller!);
+    animation = ColorTween(
+      begin: Colors.blueGrey,
+      end: Colors.white,
+    ).animate(controller!);
 
     controller?.forward();
-
-    controller?.addListener(() {
-      setState(() {});
-    });
+    controller?.addListener(() => setState(() {}));
   }
 
   @override
